@@ -1,0 +1,72 @@
+Table tb_alunos_uc {
+    cd_aluno int [pk, increment]
+    NomeAluno varchar
+    Ra varchar
+    DataNascimento date
+    Numero varchar
+    Complemento varchar
+    cd_logradouro int [ref: > tb_logradouros.cd_logradouro]
+    cd_serie_turma int [ref: > tb_serie_turma.cd_serie_turma]
+    cd_escola int [ref: > tb_escolas.cd_escola]
+}
+
+Table tb_escolas {
+    cd_escola int [pk, increment]
+    NomeEscola varchar
+    Numero varchar
+    Complemento varchar
+    cd_logradouro int [ref: > tb_logradouros.cd_logradouro]
+}
+
+Table tb_estados{
+    cd_estado int [pk, increment]
+    NomeEstado varchar
+    UF varchar
+}
+
+Table tb_cidades{
+    cd_cidade int [pk, increment]
+    NomeCidade varchar
+    cd_estado int [ref: > tb_estados.cd_estado]
+}
+
+Table tb_bairros{
+    cd_bairro int [pk, increment]
+    NomeBairro varchar
+    cd_cidade int [ref: > tb_cidades.cd_cidade]
+}
+
+
+Table tb_logradouros{
+    cd_logradouro int [pk, increment]
+    Tipo varchar
+    NomeLogradouro varchar
+    CEP varchar
+    cd_bairro int [ref: > tb_bairros.cd_bairro]
+}
+
+Table tb_serie_turma{
+    cd_serie_turma int [pk, increment]
+    cd_turma int [ref: > tb_turmas.cd_turma]
+    cd_serie int [ref: > tb_series.cd_serie]
+}
+
+Table tb_series{
+    cd_serie int [pk, increment]
+    NomeSerie varchar
+}
+
+Table tb_turma_disciplina{
+    cd_turma int [ref: > tb_turmas.cd_turma]
+    cd_disciplina int [ref: > tb_disciplinas.cd_disciplina]
+}
+
+Table tb_turmas{
+    cd_turma int [pk, increment]
+    NomeTurma varchar
+}
+
+Table tb_disciplinas {
+    cd_disciplina int [pk, increment]
+    NomeDisciplina varchar
+}

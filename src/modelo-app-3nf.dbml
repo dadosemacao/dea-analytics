@@ -1,0 +1,19 @@
+Table tb_funcionarios {
+    cd_funcionario  int [pk, increment]
+    NomeFuncionario varchar
+    cd_departamento int [ref: > tb_departamentos.cd_departamento]
+    cd_supervisor int [ref: > tb_supervisors.cd_supervisor]
+    
+}
+
+
+Table tb_departamentos {
+    cd_departamento  int [pk, increment]
+    NomeDepartamento varchar
+}
+
+
+Table tb_supervisors {
+    cd_supervisor  int [pk, increment]
+    NomeSupervisor varchar
+}

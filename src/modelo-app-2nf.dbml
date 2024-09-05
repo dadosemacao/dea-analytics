@@ -1,0 +1,19 @@
+Table tb_Cliente_2nf {
+    cd_cliente int [pk, increment]
+    ClienteNome varchar
+    ClienteCPF varchar
+}
+
+Table tb_Produto_2nf {
+    cd_produto int [pk, increment]
+    ProdutoNome varchar
+    Preco double
+}
+
+
+Table tb_Pedido_2nf {
+    cd_pedido int [pk, increment]
+    Quantidade int
+    cd_produto int [ref: > tb_Produto_2nf.cd_produto]
+    cd_cliente int [ref: > tb_Cliente_2nf.cd_cliente]
+}

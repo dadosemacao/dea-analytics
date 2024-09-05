@@ -1,0 +1,16 @@
+Table tb_alunos_1nf {
+    cd_aluno int [pk, increment]
+    nm_nome varchar
+    ra varchar
+}
+
+
+Table tb_disciplinas_1nf {
+    cd_disciplina int [pk, increment]
+    nm_disciplina varchar
+}
+
+Table tb_aluno_disciplina_1nf {
+    cd_aluno int [ref: > tb_alunos_1nf.cd_aluno]
+    cd_disciplina int [ref: > tb_disciplinas_1nf.cd_disciplina]
+}
